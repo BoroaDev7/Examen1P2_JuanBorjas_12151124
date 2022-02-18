@@ -7,10 +7,10 @@ import java.util.Scanner;
 
 public class Examen1P2_JuanBorjas_12151124 {
 
-     public static Scanner leer=new Scanner(System.in);
+     public static Scanner leer =new Scanner(System.in);
      public static  ArrayList<Personas>miembros=new ArrayList();
      public static ArrayList<Escuadron> escuadron=new ArrayList();
-     public static ArrayList<Universo> universo;
+     public static ArrayList<Universo> universo=new ArrayList();
      
     public static void main(String[] args) {
        
@@ -36,62 +36,25 @@ public class Examen1P2_JuanBorjas_12151124 {
         System.out.println("Porfavor ingrese una opcion ");
         return leer.nextInt();
     }
-     /*
-     
-     1. Opciones Universo
-
-1.1 Crear
-
- 1.2 Modificar
-
- 1.3 Eliminar
-
- 1.4 Listar
-
-2. Opciones Escuadron
-
-2.1 Crear
-
- 2.2 Modificar
-
- 2.3 Eliminar
-
- 2.4 Listar
-
- 2.5 Simular Batalla
-
-3. Opciones Persona
-
-1.1 Crear
-
- 1.2 Modificar
-
- 1.3 Eliminar
-
- 1.4 Listar
-     
-     
-     
-     
-     */
+  
       public static void opciones(int opcion){
          if(opcion==0)
                 System.exit(0); 
          if(opcion==1)
             opcionesUniverso(submenuUniverso());
             if(opcion==2)
-               submenuEscuadron();
+               opcionesEscuadron(submenuEscuadron());
             if(opcion==3)
-                submenuPersonas();
+                opcionesPersonas(submenuPersonas());
           
         
     }
       
       public static int submenuUniverso(){
-          System.out.println("1.Crear"+
-                             "2.Modificar"+
-                             "3.Eliminar"+
-                             "4.Listar");
+          System.out.println("1.Crear\n"+
+                             "2.Modificar\n"+
+                             "3.Eliminar\n"+
+                             "4.Listar\n");
           System.out.println("Ingrese la opcion: ");
           return leer.nextInt();
       } 
@@ -142,10 +105,11 @@ public class Examen1P2_JuanBorjas_12151124 {
           
       }
       public static int submenuEscuadron(){
-         System.out.println("1.Crear"+
-                             "2.Modificar"+
-                             "3.Eliminar"+
-                             "4.Listar");
+         System.out.println("1.Crear\n"+
+                             "2.Modificar\n"+
+                             "3.Eliminar\n"+
+                             "4.Listar\n"+
+                              "5.Agregar personas\n");
           System.out.println("Ingrese la opcion: ");
           return leer.nextInt(); 
       } 
@@ -158,15 +122,149 @@ public class Examen1P2_JuanBorjas_12151124 {
                 EliminarEscuadron();
           if(opcion1==4)
                 ListarEscuadron();
+            if(opcion1==5)
+                AgregarPersonas();
       }
       
       public static void CrearEscuadron(){
+          System.out.println("Ingrese el nombre del escuadron");
+          String nombreEscuadron=leer.next();
+          System.out.println("Ingrese el lugar de la base");  
+          String lugarBase=leer.next();
+          System.out.println("Ingrese el si los miembros son villanos o heroes");
+          String tipoEsc=leer.next();
+            Escuadron squad=new Escuadron(nombreEscuadron,lugarBase,tipoEsc);
+            escuadron.add(squad);
+      }
+      public static void ModificarEscuadron(){
+          System.out.println("Ingrese la posicion del escuadron a modificar");
+          int posSquad=leer.nextInt();
+          System.out.println("Ingrese el nuevonombre del escuadron");
+          escuadron.get(posSquad).setNombreesc(leer.next());
+          System.out.println("Ingrese el nuevo lugar de la base");  
+          escuadron.get(posSquad).setLugarBase(leer.next());
+          System.out.println("Ingrese el si los miembros son villanos o heroes");
+          escuadron.get(posSquad).setHeroeoVillano(leer.next());
+         
+          }
+      
+      public static void EliminarEscuadron(){
+          System.out.println("Ingrese la posicion del Escuadron a eliminar");
+          int posEsc=leer.nextInt();
+          escuadron.remove(posEsc);
+      }
+          
+      public static void ListarEscuadron(){
+          for (Escuadron squad : escuadron) {
+              System.out.println(squad.toString());
+              
+          }  
+      }
+      public static void AgregarPersonas(){
+          System.out.println("Ingrese la posicion del escuadron ");
+          int posSquad=leer.nextInt();
+          System.out.println("Ingrese la posicion de los miembros a asignar");
+          int posEsc=leer.nextInt();
+          if(miembros.get(posEsc).getHeroeoVillano().equals(escuadron.get(posSquad).getHeroeoVillano())){
+              escuadron.get(posSquad).setMiembros(((Personas)miembros.get(posEsc)));
+              System.out.println("¿Le gustaria Agregar mas miembros?");
+          String respuesta=leer.next();
+          while(respuesta.equals("Si")||respuesta.equals("si")){
+              System.out.println("Ingrese la posicion de los miembros a asignar");
+           posEsc=leer.nextInt();
+           if(miembros.get(posEsc).getHeroeoVillano().equals(escuadron.get(posSquad).getHeroeoVillano())){
+              escuadron.get(posSquad).setMiembros(((Personas)miembros.get(posEsc)));
+          escuadron.get(posSquad).setMiembros(((Personas)miembros.get(posEsc)));
+           }
+          System.out.println("¿Le gustaria Agregar mas miembros?");
+            respuesta=leer.next();
+          } 
+          }
+          else{
+              System.out.println("El tipo de escuadron y el tipo de Heroe no son lo mismo");
+          }
           
       }
-      
-      
-      public static int submenuPersonas(){
-          
+ 
+     public static int submenuPersonas(){
+         System.out.println("1.Crear\n"+
+                             "2.Modificar\n"+
+                             "3.Eliminar\n"+
+                             "4.Listar\n"
+                             );
+          System.out.println("Ingrese la opcion: ");
+          return leer.nextInt(); 
       } 
+    
+    public static void opcionesPersonas(int opcion1){
+          if(opcion1==1)
+            CrearPersona();
+            if(opcion1==2)
+               ModificarEscuadron();
+            if(opcion1==3)
+                EliminarEscuadron();
+          if(opcion1==4)
+                ListarEscuadron();
+      }
+    
+    
+    public static void CrearPersona(){
+        System.out.println("Ingrese el nombre de la persona");
+        String nombre=leer.next();
+        if(verificarNombre(nombre)){
+            System.out.println("Dos personas no pueden tener el mismo nombre");
+            System.out.println("");
+             System.out.println("Ingrese el nombre de la persona");
+        }
+        System.out.println("Ingrese si es heroe o villano");
+        String HeroeoVillano=leer.next();
+        if(HeroeoVillano.equals("Heroe")||HeroeoVillano.equals("heroe")){
+            System.out.println("Ingrese el poder del heroe");
+            String poder=leer.next();
+            System.out.println("Ingrese la fuerza");
+            int fuerza=leer.nextInt();
+            System.out.println("Ingrese la habilidad mental");
+            int habilidadMental=leer.nextInt();
+            System.out.println("Ingrese la habilidad Fisica");
+            int habilidadFisica=leer.nextInt();
+            System.out.println("Ingrese de que tipo es el heroe");
+            leer.next();
+            String tipo=leer.next();
+            
+            if(tipo.equalsIgnoreCase("Persona Normal")){
+              boolean tienesquad=false;
+            Personas heroes=new PersonaNormal(nombre,HeroeoVillano,poder,fuerza,habilidadMental,habilidadFisica,tienesquad);
+            miembros.add(heroes);
+            }      
+            
+           else if(tipo.equalsIgnoreCase("Mutante")){
+                ArrayList<String>fact=new ArrayList();
+                System.out.println("Ingrese los factores mutantes");
+                fact.add(leer.nextLine());
+              boolean tienesquad=false;
+            Personas heroes=new Mutante (nombre,HeroeoVillano,poder,fuerza,habilidadMental,habilidadFisica,tienesquad,fact);
+            miembros.add(heroes);
+            }   
+            else if(tipo.equalsIgnoreCase("Super Humano")){
+                System.out.println("Ingrese los factores mutantes");
+                String superPoder=leer.nextLine();
+              boolean tienesquad=false;
+            Personas heroes=new SuperHumano(nombre,HeroeoVillano,poder,fuerza,habilidadMental,habilidadFisica,tienesquad,superPoder);
+            miembros.add(heroes);
+            }   
+        }
+        
+   
+    }
+    
+     public static boolean verificarNombre(String nombre){
+        for(Personas persona:miembros){
+            if(persona.getNombre().equals(nombre)){
+               return true;
+            }
+        }
+       return false;
+    }
+    
     
 }

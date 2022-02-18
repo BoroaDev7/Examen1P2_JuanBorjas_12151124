@@ -32,6 +32,7 @@ public class Universo {
         this.squads = squads;
     }
 
+    
     @Override
     public String toString() {
         return "Universo{" + "nombre=" + nombre + ", miembros=" + squads + '}';

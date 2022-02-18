@@ -13,6 +13,11 @@ public class SuperHumano extends Personas{
         super(nombre, poder, debilidad, HeroeoVillano, fuerza, hablidadMental, habilidadFisica, tieneEscuadron);
         this.superpoder = superpoder;
     }
+    
+     public SuperHumano( String nombre, String poder,  String HeroeoVillano, int fuerza, int hablidadMental, int habilidadFisica, boolean tieneEscuadron,String superpoder) {
+        super(nombre, poder, HeroeoVillano, fuerza, hablidadMental, habilidadFisica, tieneEscuadron);
+        this.superpoder = superpoder;
+    }
 
     public String getSuperpoder() {
         return superpoder;

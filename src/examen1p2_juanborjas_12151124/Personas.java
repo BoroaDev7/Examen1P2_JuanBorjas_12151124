@@ -19,6 +19,17 @@ public abstract class Personas {
         this.habilidadFisica = habilidadFisica;
         this.tieneEscuadron = tieneEscuadron;
     }
+    
+    public Personas(String nombre, String poder, String HeroeoVillano, int fuerza, int hablidadMental, int habilidadFisica, boolean tieneEscuadron) {
+        this.nombre = nombre;
+        this.poder = poder;
+        
+        this.HeroeoVillano = HeroeoVillano;
+        this.fuerza = fuerza;
+        this.hablidadMental = hablidadMental;
+        this.habilidadFisica = habilidadFisica;
+        this.tieneEscuadron = tieneEscuadron;
+    }
 
     public String getNombre() {
         return nombre;

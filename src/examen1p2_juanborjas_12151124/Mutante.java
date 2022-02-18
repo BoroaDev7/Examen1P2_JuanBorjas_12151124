@@ -16,6 +16,10 @@ public class Mutante extends Personas {
         super(nombre,  poder, debilidad,  HeroeoVillano,  fuerza,  hablidadMental,  habilidadFisica, tieneEscuadron);
         this.factoresMutantes=factoresMutantes;
     }
+    public Mutante( String nombre, String poder, String HeroeoVillano, int fuerza, int hablidadMental, int habilidadFisica, boolean tieneEscuadron,ArrayList<String>factoresMutantes) {
+        super(nombre,  poder,  HeroeoVillano,  fuerza,  hablidadMental,  habilidadFisica, tieneEscuadron);
+        this.factoresMutantes=factoresMutantes;
+    }
 
     public ArrayList<String> getFactoresMutantes() {
         return factoresMutantes;
