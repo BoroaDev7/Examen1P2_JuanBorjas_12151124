@@ -1,13 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package examen1p2_juanborjas_12151124;
 
-/**
- *
- * @author famil
- */
-public class Deidad {
+
+public class Deidad extends Extraterrestres{
+    private boolean tieneCreyentes;
+    private String Religion;
+
+    @Override
+    public void FinalChance(Personas p1, Personas p2) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+  
     
 }

@@ -1,10 +1,10 @@
 
 package examen1p2_juanborjas_12151124;
 
-public class Personas {
+public abstract class Personas {
     private String nombre,poder,debilidad,HeroeoVillano;
     private int fuerza,hablidadMental,habilidadFisica;
-    private boolean tieneEscuadron;
+    private boolean tieneEscuadron=false;
 
     public Personas() {
     }
@@ -89,5 +89,6 @@ public class Personas {
         return "Personas{" + "nombre=" + nombre + ", poder=" + poder + ", debilidad=" + debilidad + ", HeroeoVillano=" + HeroeoVillano + ", fuerza=" + fuerza + ", hablidadMental=" + hablidadMental + ", habilidadFisica=" + habilidadFisica + ", tieneEscuadron=" + tieneEscuadron + '}';
     }
     
+    public abstract void FinalChance(Personas p1,Personas p2);
     
 }

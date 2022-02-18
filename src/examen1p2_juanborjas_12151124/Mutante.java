@@ -29,6 +29,11 @@ public class Mutante extends Personas {
     public String toString() {
         return super.toString()+ "factoresMutantes=" + factoresMutantes + '}';
     }
+
+    @Override
+    public void FinalChance(Personas p1, Personas p2) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
 }

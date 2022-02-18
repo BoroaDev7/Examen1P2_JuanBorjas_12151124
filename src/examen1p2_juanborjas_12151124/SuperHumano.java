@@ -1,13 +1,37 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package examen1p2_juanborjas_12151124;
 
-/**
- *
- * @author famil
- */
-public class SuperHumano {
+
+public class SuperHumano extends Personas{
+    private String superpoder;
+
+    public SuperHumano() {
+      super();
+    }
+
+    public SuperHumano(String superpoder, String nombre, String poder, String debilidad, String HeroeoVillano, int fuerza, int hablidadMental, int habilidadFisica, boolean tieneEscuadron) {
+        super(nombre, poder, debilidad, HeroeoVillano, fuerza, hablidadMental, habilidadFisica, tieneEscuadron);
+        this.superpoder = superpoder;
+    }
+
+    public String getSuperpoder() {
+        return superpoder;
+    }
+
+    public void setSuperpoder(String superpoder) {
+        this.superpoder = superpoder;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+ "superpoder=" + superpoder ;
+    }
+
+    @Override
+    public void FinalChance(Personas p1, Personas p2) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    
     
 }
