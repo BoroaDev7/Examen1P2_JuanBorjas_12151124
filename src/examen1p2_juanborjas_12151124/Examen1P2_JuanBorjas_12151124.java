@@ -2,6 +2,8 @@
 package examen1p2_juanborjas_12151124;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 
@@ -156,8 +158,8 @@ public class Examen1P2_JuanBorjas_12151124 {
           
       public static void ListarEscuadron(){
           for (Escuadron squad : escuadron) {
-              System.out.println(squad.toString());
-              
+              System.out.println(squad.getNombreesc());
+              System.out.println(squad.getLugarBase());
           }  
       }
       public static void AgregarPersonas(){
@@ -200,11 +202,11 @@ public class Examen1P2_JuanBorjas_12151124 {
           if(opcion1==1)
             CrearPersona();
             if(opcion1==2)
-               ModificarEscuadron();
+               ModificarPersona();
             if(opcion1==3)
-                EliminarEscuadron();
+                EliminarPersona();
           if(opcion1==4)
-                ListarEscuadron();
+                ListarPersona();
       }
     
     
@@ -221,15 +223,15 @@ public class Examen1P2_JuanBorjas_12151124 {
         if(HeroeoVillano.equals("Heroe")||HeroeoVillano.equals("heroe")){
             System.out.println("Ingrese el poder del heroe");
             String poder=leer.next();
+             System.out.println("Ingrese de que tipo es el heroe");
+            String tipo=leer.next();
             System.out.println("Ingrese la fuerza");
             int fuerza=leer.nextInt();
             System.out.println("Ingrese la habilidad mental");
             int habilidadMental=leer.nextInt();
             System.out.println("Ingrese la habilidad Fisica");
             int habilidadFisica=leer.nextInt();
-            System.out.println("Ingrese de que tipo es el heroe");
-            leer.next();
-            String tipo=leer.next();
+           
             
             if(tipo.equalsIgnoreCase("Persona Normal")){
               boolean tienesquad=false;
@@ -251,12 +253,141 @@ public class Examen1P2_JuanBorjas_12151124 {
               boolean tienesquad=false;
             Personas heroes=new SuperHumano(nombre,HeroeoVillano,poder,fuerza,habilidadMental,habilidadFisica,tienesquad,superPoder);
             miembros.add(heroes);
+            }
+            
+            else if(tipo.equalsIgnoreCase("Por Accidente Radioactivo")){
+                System.out.println("Ingrese la edad ");
+                int edad=leer.nextInt();
+                System.out.println("Ingrese el tipo de accidente");
+                String tipoAc=leer.nextLine();
+                boolean tienesquad=false;
+            Personas heroes=new PorAccidenteRadiactivo(nombre,HeroeoVillano,poder,fuerza,habilidadMental,habilidadFisica,tienesquad,edad,tipoAc);
+            miembros.add(heroes);
+            }
+            else if(tipo.equalsIgnoreCase("Por Accidente Radioactivo")){
+                System.out.println("Ingrese la edad ");
+                int edad=leer.nextInt();
+                System.out.println("Ingrese el tipo de accidente");
+                String tipoAc=leer.nextLine();
+                boolean tienesquad=false;
+            Personas heroes=new PorAccidenteRadiactivo(nombre,HeroeoVillano,poder,fuerza,habilidadMental,habilidadFisica,tienesquad,edad,tipoAc);
+            miembros.add(heroes);
+            }
+            else if (tipo.equalsIgnoreCase("Alien")){
+                System.out.println("Ingrese el planeta");
+                String planeta=leer.next();
+                boolean tienesquad=false;
+            Personas heroes=new Alien(nombre,HeroeoVillano,poder,fuerza,habilidadMental,habilidadFisica,tienesquad,planeta);
+            miembros.add(heroes);
+            }
+            else if (tipo.equalsIgnoreCase("Deidad")){
+                boolean creyentes;
+                System.out.println("Ingrese si tiene creyentes");
+                String crey=leer.next();
+                if(crey.equalsIgnoreCase("si")){
+                    creyentes=true;
+                    System.out.println("Ingrese la religion");
+                String religion=leer.next();
+                boolean tienesquad=false;
+            Personas heroes=new Deidad(nombre,HeroeoVillano,poder,fuerza,habilidadMental,habilidadFisica,tienesquad,creyentes,religion);
+            miembros.add(heroes);
+                }else{
+                    creyentes=false;
+                    System.out.println("Ingrese la religion");
+                String religion=leer.next();
+                boolean tienesquad=false;
+            Personas heroes=new Deidad(nombre,HeroeoVillano,poder,fuerza,habilidadMental,habilidadFisica,tienesquad,creyentes,religion);
+            miembros.add(heroes);
+                }
+                
+            }
+        } else  if(HeroeoVillano.equalsIgnoreCase("villano")){
+            System.out.println("Ingrese la debilidad del heroe");
+            String debilidad=leer.next();
+             System.out.println("Ingrese de que tipo es el heroe");
+            String tipo=leer.next();
+            System.out.println("Ingrese la fuerza");
+            int fuerza=leer.nextInt();
+            System.out.println("Ingrese la habilidad mental");
+            int habilidadMental=leer.nextInt();
+            System.out.println("Ingrese la habilidad Fisica");
+            int habilidadFisica=leer.nextInt();
+           
+            
+            if(tipo.equalsIgnoreCase("Persona Normal")){
+              boolean tienesquad=false;
+            Personas heroes=new PersonaNormal(nombre,HeroeoVillano,debilidad,fuerza,habilidadMental,habilidadFisica,tienesquad);
+            miembros.add(heroes);
+            }      
+            
+           else if(tipo.equalsIgnoreCase("Mutante")){
+                ArrayList<String>fact=new ArrayList();
+                System.out.println("Ingrese los factores mutantes");
+                fact.add(leer.nextLine());
+              boolean tienesquad=false;
+            Personas heroes=new Mutante (nombre,HeroeoVillano,debilidad,fuerza,habilidadMental,habilidadFisica,tienesquad,fact);
+            miembros.add(heroes);
             }   
+            else if(tipo.equalsIgnoreCase("Super Humano")){
+                System.out.println("Ingrese los factores mutantes");
+                String superPoder=leer.nextLine();
+              boolean tienesquad=false;
+            Personas heroes=new SuperHumano(nombre,HeroeoVillano,debilidad,fuerza,habilidadMental,habilidadFisica,tienesquad,superPoder);
+            miembros.add(heroes);
+            }
+            
+            else if(tipo.equalsIgnoreCase("Por Accidente Radioactivo")){
+                System.out.println("Ingrese la edad ");
+                int edad=leer.nextInt();
+                System.out.println("Ingrese el tipo de accidente");
+                String tipoAc=leer.nextLine();
+                boolean tienesquad=false;
+            Personas heroes=new PorAccidenteRadiactivo(nombre,HeroeoVillano,debilidad,fuerza,habilidadMental,habilidadFisica,tienesquad,edad,tipoAc);
+            miembros.add(heroes);
+            }
+            else if(tipo.equalsIgnoreCase("Por Accidente Radioactivo")){
+                System.out.println("Ingrese la edad ");
+                int edad=leer.nextInt();
+                System.out.println("Ingrese el tipo de accidente");
+                String tipoAc=leer.nextLine();
+                boolean tienesquad=false;
+            Personas heroes=new PorAccidenteRadiactivo(nombre,HeroeoVillano,debilidad,fuerza,habilidadMental,habilidadFisica,tienesquad,edad,tipoAc);
+            miembros.add(heroes);
+            }
+            else if (tipo.equalsIgnoreCase("Alien")){
+                System.out.println("Ingrese el planeta");
+                String planeta=leer.next();
+                boolean tienesquad=false;
+            Personas heroes=new Alien(nombre,HeroeoVillano,debilidad,fuerza,habilidadMental,habilidadFisica,tienesquad,planeta);
+            miembros.add(heroes);
+            }
+            else if (tipo.equalsIgnoreCase("Deidad")){
+                boolean creyentes;
+                System.out.println("Ingrese si tiene creyentes");
+                String crey=leer.next();
+                if(crey.equalsIgnoreCase("si")){
+                    creyentes=true;
+                    System.out.println("Ingrese la religion");
+                String religion=leer.next();
+                boolean tienesquad=false;
+            Personas heroes=new Deidad(nombre,HeroeoVillano,debilidad,fuerza,habilidadMental,habilidadFisica,tienesquad,creyentes,religion);
+            miembros.add(heroes);
+                }else{
+                    creyentes=false;
+                    System.out.println("Ingrese la religion");
+                String religion=leer.next();
+                boolean tienesquad=false;
+            Personas heroes=new Deidad(nombre,HeroeoVillano,debilidad,fuerza,habilidadMental,habilidadFisica,tienesquad,creyentes,religion);
+            miembros.add(heroes);
+                }
+                
+            }
         }
         
-   
+
     }
     
+
      public static boolean verificarNombre(String nombre){
         for(Personas persona:miembros){
             if(persona.getNombre().equals(nombre)){
@@ -265,6 +396,60 @@ public class Examen1P2_JuanBorjas_12151124 {
         }
        return false;
     }
-    
+     
+   public static void ModificarPersona(){
+       System.out.println("Ingrese la posicion de la persona a modificar");
+       int posPer=leer.nextInt();
+        System.out.println("Ingrese el nuevo nombre de la persona");
+        miembros.get(posPer).setNombre(leer.next());
+        if(verificarNombre(miembros.get(posPer).getNombre())){
+            System.out.println("Dos personas no pueden tener el mismo nombre");
+            System.out.println("");
+             System.out.println("Ingrese el nombre de la persona");
+        }
+        System.out.println("Ingrese si es heroe o villano");
+       miembros.get(posPer).setHeroeoVillano(leer.next());
+        if(miembros.get(posPer).getHeroeoVillano().equalsIgnoreCase("Heroe")){
+            System.out.println("Ingrese el poder del heroe");
+           miembros.get(posPer).setPoder(leer.next());
+            System.out.println("Ingrese la fuerza");
+            miembros.get(posPer).setFuerza(leer.nextInt());
+            System.out.println("Ingrese la habilidad mental");
+            miembros.get(posPer).setHablidadMental(leer.nextInt());
+            System.out.println("Ingrese la habilidad Fisica");
+            miembros.get(posPer).setHabilidadFisica(leer.nextInt());
+        }
+        if(miembros.get(posPer).getHeroeoVillano().equalsIgnoreCase("Villano")){
+            System.out.println("Ingrese la debilidad del heroe");
+           miembros.get(posPer).setDebilidad(leer.next());
+            System.out.println("Ingrese la fuerza");
+            miembros.get(posPer).setFuerza(leer.nextInt());
+            System.out.println("Ingrese la habilidad mental");
+            miembros.get(posPer).setHablidadMental(leer.nextInt());
+            System.out.println("Ingrese la habilidad Fisica");
+            miembros.get(posPer).setHabilidadFisica(leer.nextInt());
+        }
+   }
+   
+   public static void EliminarPersona(){
+       System.out.println("Ingrese la posicion de la persona a eliminar");
+       int posPers=leer.nextInt();
+       miembros.remove(posPers);
+       
+   }
+   
+   public static void ListarPersona(){
+          for (Personas personas : miembros) {
+             if(personas.getHeroeoVillano().equalsIgnoreCase("Heroe")){
+                 System.out.println("Heroes: "+personas.getNombre()+" "+ personas.getPoder());
+             }
+             else{
+               System.out.println("Villanos: "+personas.getNombre()+" "+ personas.getDebilidad());
+          }  
+      }
+   
+   
+   
+   }
     
 }

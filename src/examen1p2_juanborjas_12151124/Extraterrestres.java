@@ -10,6 +10,9 @@ public abstract class Extraterrestres extends Personas {
     public Extraterrestres(String nombre, String poder, String debilidad, String HeroeoVillano, int fuerza, int hablidadMental, int habilidadFisica, boolean tieneEscuadron) {
         super(nombre, poder, debilidad, HeroeoVillano, fuerza, hablidadMental, habilidadFisica, tieneEscuadron);
     }
+      public Extraterrestres(String nombre, String poder,  String HeroeoVillano, int fuerza, int hablidadMental, int habilidadFisica, boolean tieneEscuadron) {
+        super(nombre, poder, HeroeoVillano, fuerza, hablidadMental, habilidadFisica, tieneEscuadron);
+    }
 
     @Override
     public String toString() {

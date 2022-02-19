@@ -15,6 +15,11 @@ public class PorAccidenteRadiactivo extends Personas {
         this.edadAcidente = edadAcidente;
         this.tipoAccidente = tipoAccidente;
     }
+    public PorAccidenteRadiactivo( String nombre, String poder, String HeroeoVillano, int fuerza, int hablidadMental, int habilidadFisica, boolean tieneEscuadron,int edadAcidente, String tipoAccidente) {
+        super(nombre, poder, HeroeoVillano, fuerza, hablidadMental, habilidadFisica, tieneEscuadron);
+        this.edadAcidente = edadAcidente;
+        this.tipoAccidente = tipoAccidente;
+    }
 
     public int getEdadAcidente() {
         return edadAcidente;

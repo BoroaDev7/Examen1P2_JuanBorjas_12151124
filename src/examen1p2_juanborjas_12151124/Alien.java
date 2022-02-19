@@ -8,8 +8,8 @@ public class Alien extends Extraterrestres {
         super();
     }
 
-    public Alien(String planeta) {
-       super();
+    public Alien(String nombre, String poder,  String HeroeoVillano, int fuerza, int hablidadMental, int habilidadFisica, boolean tieneEscuadron,String planeta) {
+       super(nombre, poder, HeroeoVillano, fuerza, hablidadMental, habilidadFisica, tieneEscuadron);
         this.planeta = planeta;
     }
 
