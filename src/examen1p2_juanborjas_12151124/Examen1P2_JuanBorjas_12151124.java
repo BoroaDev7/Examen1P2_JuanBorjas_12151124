@@ -242,14 +242,14 @@ public class Examen1P2_JuanBorjas_12151124 {
            else if(tipo.equalsIgnoreCase("Mutante")){
                 ArrayList<String>fact=new ArrayList();
                 System.out.println("Ingrese los factores mutantes");
-                fact.add(leer.nextLine());
+                fact.add(leer.next());
               boolean tienesquad=false;
             Personas heroes=new Mutante (nombre,HeroeoVillano,poder,fuerza,habilidadMental,habilidadFisica,tienesquad,fact);
             miembros.add(heroes);
             }   
             else if(tipo.equalsIgnoreCase("Super Humano")){
-                System.out.println("Ingrese los factores mutantes");
-                String superPoder=leer.nextLine();
+                System.out.println("Ingrese el super Poder");
+                String superPoder=leer.next();
               boolean tienesquad=false;
             Personas heroes=new SuperHumano(nombre,HeroeoVillano,poder,fuerza,habilidadMental,habilidadFisica,tienesquad,superPoder);
             miembros.add(heroes);
@@ -329,8 +329,8 @@ public class Examen1P2_JuanBorjas_12151124 {
             miembros.add(heroes);
             }   
             else if(tipo.equalsIgnoreCase("Super Humano")){
-                System.out.println("Ingrese los factores mutantes");
-                String superPoder=leer.nextLine();
+                System.out.println("Ingrese el super Poder");
+                String superPoder=leer.next();
               boolean tienesquad=false;
             Personas heroes=new SuperHumano(nombre,HeroeoVillano,debilidad,fuerza,habilidadMental,habilidadFisica,tienesquad,superPoder);
             miembros.add(heroes);
@@ -440,7 +440,7 @@ public class Examen1P2_JuanBorjas_12151124 {
    
    public static void ListarPersona(){
           for (Personas personas : miembros) {
-             if(personas.getHeroeoVillano().equalsIgnoreCase("Heroe")){
+             if(personas.getHeroeoVillano().equalsIgnoreCase("heroe")){
                  System.out.println("Heroes: "+personas.getNombre()+" "+ personas.getPoder());
              }
              else{
